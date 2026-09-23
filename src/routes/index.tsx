@@ -2,9 +2,10 @@ import { db } from '@/db'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 import { Badge } from '#/components/ui/badge'
-import { ListTodoIcon, PlusIcon } from 'lucide-react'
+import { ListTodoIcon, PlusIcon, Table } from 'lucide-react'
 import { Button } from '#/components/ui/button'
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '#/components/ui/empty'
+import { TableHead, TableHeader, TableRow } from '#/components/ui/table'
 
 const serverLoader = createServerFn({ method: "GET"}).handler(() => {
   return db.query.todos.findMany()
@@ -77,4 +78,17 @@ function TodoListTable({
       </Empty>
     )
   }
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow className="hover:bg-transparent">
+          <TableHead></TableHead>
+          <TableHead>Task</TableHead>
+          <TableHead>Created On</TableHead>
+          <TableHead className='w-0'></TableHead>
+        </TableRow>
+      </TableHeader>
+    </Table>
+  )
 }
