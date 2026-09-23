@@ -345,3 +345,9 @@ a {
     color: var(--foreground);
   }
 }
+
+@utility container {
+  @apply max-w-4xl;
+  margin-inline: auto;
+  padding: 1rem;
+}
